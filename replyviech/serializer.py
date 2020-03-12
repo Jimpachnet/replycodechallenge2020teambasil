@@ -21,6 +21,8 @@ def write_output(assignment, original_devs, original_managers, nodes, outfile):
             else:
                 f.write("X\n")
 
+    print("DONEEEEEEEEEEEEEEEEEEEEEEE")
+
 
 
 

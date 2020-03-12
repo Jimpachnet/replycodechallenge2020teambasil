@@ -1,5 +1,6 @@
 import numpy as np
 import ray
+import pickle
 from replyviech.serializer import write_output
 
 def calculate_potential(w1, w2):
@@ -54,7 +55,8 @@ def bongo_optimizer(map, workers,n_devs, n_manager, n_devstoassign, n_managersto
                 best_assignment = result[1]
                 best_assignment_cost = result[0]
                 print("[Info] New best assignment costs " + str(result[0]))
-                write_output(assignment, developers, managers, nodes, outputfile + str(-best_assignment_cost)+".txt")
+                #write_output(assignment, developers, managers, nodes, outputfile + str(-best_assignment_cost)+".txt")
+                pickle.dump(assignment, open(outputfile + str(-best_assignment_cost)+ ".p", "wb"))
 
     ray.shutdown()
 
