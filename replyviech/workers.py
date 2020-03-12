@@ -4,9 +4,6 @@ class Developer:
         self.bonus = bonus
         self.skillset = skillset
 
-    def __str__(self):
-        return f"Developer(company={self.company}, bonus={self.bonus}, skillset={self.skillset})"
-
     @classmethod
     def parse(cls, string):
         tokens = string.split(' ')
@@ -22,8 +19,6 @@ class Manager:
         self.company = company
         self.bonus = bonus
 
-    def __str__(self):
-        return f"Manager(company={self.company}, bonus={self.bonus})"
 
     @classmethod
     def parse(cls, string):
