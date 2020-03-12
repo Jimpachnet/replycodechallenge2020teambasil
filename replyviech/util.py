@@ -28,7 +28,8 @@ def cost(map, workers, assignment):
         jobid1 = nodes[node1_id].id
         jobid2 = nodes[node2_id].id
 
-        cost -= calculate_potential(workers[type1][assignment[type1][jobid1]],workers[type2][assignment[type1][jobid2]])
+
+        cost -= calculate_potential(workers[type1][assignment[type1][jobid1]],workers[type2][assignment[type2][jobid2]])
 
     return cost, assignment
 
@@ -39,13 +40,13 @@ def bongo_optimizer(map, workers,n_devs, n_manager, n_devstoassign, n_managersto
     best_assignment_cost = 0
     best_assignment = {}
 
-    ray.init(num_cpus = num_cpus)
+    ray.init(num_cpus = num_cpus, local_mode = False)
     for i in range(iterations):
         futures = []
         for j in range(num_cpus):
             devassign = np.random.choice(range(n_devs),n_devstoassign,replace=False )
-            managerassign = np.random.choice(range(n_devs), n_devstoassign, replace=False)
-            assignment = {"developer":devassign,"managers":managerassign}
+            managerassign = np.random.choice(range(n_manager), n_managerstoassign, replace=False)
+            assignment = {"developer":devassign,"manager":managerassign}
             futures.append(cost.remote(map,workers,assignment))
         for result in ray.get(futures):
             if result[0] < best_assignment_cost:
