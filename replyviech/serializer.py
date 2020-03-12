@@ -17,9 +17,9 @@ def write_output(assignment, original_devs, original_managers, nodes, outfile):
             ids = [id for id, x in enumerate(manager) if x == i]
             if ids:
                 pos = man_nodes[ids[0]].position
-                f.write(f"{pos[1]} {pos[0]}")
+                f.write("{} {}\n".format(pos[0], pos[1]))
             else:
-                f.write("X")
+                f.write("X\n")
 
 
 
