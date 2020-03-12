@@ -4,7 +4,7 @@ from replyviech.parser import parse_input
 from replyviech.serializer import write_output
 import pickle
 
-level = 'b'
+level = 'f'
 prefix = dict(
         a="a_solar",
         b="b_dream",
