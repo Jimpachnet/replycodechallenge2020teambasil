@@ -34,7 +34,7 @@ def cost(map, workers, assignment):
     return cost, assignment
 
 def bongo_optimizer(map, workers,n_devs, n_manager, n_devstoassign, n_managerstoassign):
-    num_cpus = 1
+    num_cpus = 16
     iterations = 1000
 
     best_assignment_cost = 0
