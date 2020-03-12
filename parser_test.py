@@ -1,7 +1,7 @@
 from replyviech.parser import parse_input
 
 
-edges, nodes, developers, managers = parse_input("input/a_solar.txt")
+edges, nodes, developers, managers, n_dev, n_man = parse_input("input/a_solar.txt")
 
 print(f"{len(developers)} Developers:")
 for dev in developers:
@@ -20,3 +20,5 @@ for edge in edges:
     print(f"\t{edge}")
 
 print(f"Loaded {len(developers)} developers, {len(managers)} managers, {len(nodes)} nodes and {len(edges)} edges.")
+print(f"n_dev: {n_dev}")
+print(f"n_man: {n_man}")

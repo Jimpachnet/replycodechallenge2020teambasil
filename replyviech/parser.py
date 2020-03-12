@@ -1,4 +1,3 @@
-from itertools import islice
 from .workers import Developer, Manager
 
 
@@ -58,16 +57,16 @@ def create_office(lines):
         nodes.extend(new_row)
         last_row = new_row
 
-    return nodes, edges
+    return nodes, edges, dev_id, man_id
 
 
 def parse_input(path):
     with open(path) as f:
         office_dim = [*map(lambda x: int(x), next(f).split(' '))]
-        nodes, edges = create_office(next(f).strip() for _ in range(office_dim[1]))
+        nodes, edges, n_assign_devs, n_assign_mans = create_office(next(f).strip() for _ in range(office_dim[1]))
         n_developers = int(next(f))
         developers = [Developer.parse(next(f)) for _ in range(n_developers)]
         n_managers = int(next(f))
         managers = [Manager.parse(next(f)) for _ in range(n_managers)]
 
-    return edges, nodes, developers, managers
+    return edges, nodes, developers, managers, n_assign_devs, n_assign_mans
