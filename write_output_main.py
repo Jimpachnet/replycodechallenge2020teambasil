@@ -1,9 +1,11 @@
 import pickle
 from replyviech.parser import parse_input
 
-pickle_file = "output/d_maelstrom16862.p"
-input_file = "input/d_maelstrom.txt"
-output_file = "output/d.txt"
+pickle_file = "output/c_soup2625.p"
+input_file = "input/c_soup.txt"
+output_file = "output/c_new.txt"
+
+
 
 with open(pickle_file, 'rb') as f:
     data = pickle.load(f)
