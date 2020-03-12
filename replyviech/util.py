@@ -1,5 +1,6 @@
 import numpy as np
 import ray
+from replyviech.serializer import write_output
 
 def calculate_potential(w1, w2):
     wp = 0
@@ -33,7 +34,7 @@ def cost(map, workers, assignment):
 
     return cost, assignment
 
-def bongo_optimizer(map, workers,n_devs, n_manager, n_devstoassign, n_managerstoassign):
+def bongo_optimizer(map, workers,n_devs, n_manager, n_devstoassign, n_managerstoassign, developers, managers, nodes, outputfile):
     num_cpus = 24
     iterations = 10000
 
@@ -53,6 +54,7 @@ def bongo_optimizer(map, workers,n_devs, n_manager, n_devstoassign, n_managersto
                 best_assignment = result[1]
                 best_assignment_cost = result[0]
                 print("[Info] New best assignment costs " + str(result[0]))
+                write_output(assignment, developers, managers, nodes, outputfile + str(-best_assignment_cost)+".txt")
 
     ray.shutdown()
 
@@ -60,14 +62,14 @@ def bongo_optimizer(map, workers,n_devs, n_manager, n_devstoassign, n_managersto
 
 
 
-def optimize(map, workers):
+def optimize(map, workers, developers, managers, nodes, outputfile):
     n_devs = len(workers["developer"])
     n_manager = len(workers["manager"])
 
     n_devstoassign = map["n_devstoassign"]
     n_managerstoassign = map["n_managerstoassign"]
 
-    assignment, cost = bongo_optimizer(map,workers,n_devs,n_manager,n_devstoassign, n_managerstoassign)
+    assignment, cost = bongo_optimizer(map,workers,n_devs,n_manager,n_devstoassign, n_managerstoassign, developers, managers, nodes, outputfile)
 
     print("[Info] Best assignment costs "+str(cost))
 

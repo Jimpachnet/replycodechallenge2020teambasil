@@ -16,7 +16,7 @@ map["n_managerstoassign"] = n_manager
 workers = {"developer": developers, "manager":managers}
 
 
-assignment = optimize(map,workers)
+assignment = optimize(map,workers, developers, managers, nodes, outputfile)
 
 write_output(assignment, developers, managers, nodes, outputfile+".txt")
 
