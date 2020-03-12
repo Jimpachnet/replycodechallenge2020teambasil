@@ -35,7 +35,7 @@ def create_office(lines):
                 connect_to_prev = False
             elif c == 'M':
                 new_row.append(Node(
-                    type='M',
+                    type='manager',
                     id=man_id,
                     gid=id,
                     position=(j, i)))
@@ -45,7 +45,7 @@ def create_office(lines):
                 man_id += 1
             elif c == '_':
                 new_row.append(Node(
-                    type='_',
+                    type='developer',
                     id=dev_id,
                     gid=id,
                     position=(j, i)))
