@@ -7,7 +7,7 @@ import numpy as np
 import uuid
 import copy
 
-level = 'e'
+level = 'c'
 prefix = dict(
         a="a_solar",
         b="b_dream",
