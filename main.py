@@ -1,10 +1,11 @@
 from replyviech.util import calculate_potential, optimize
 from replyviech.workers import Developer, Manager
 from replyviech.parser import parse_input
+from replyviech.serializer import write_output
 import pickle
 
-inputfile = "input/f_glitch.txt"
-outputfile = "output/f_glitch.p"
+inputfile = "input/a_solar.txt"
+outputfile = "output/a_solar"
 
 edges, nodes, developers, managers, n_dev, n_manager = parse_input(inputfile)
 
@@ -17,4 +18,6 @@ workers = {"developer": developers, "manager":managers}
 
 assignment = optimize(map,workers)
 
-pickle.dump( assignment, open( outputfile, "wb" ) )
+write_output(assignment, developers, managers, nodes, outputfile+".txt")
+
+pickle.dump( assignment, open( outputfile+".p", "wb" ) )
