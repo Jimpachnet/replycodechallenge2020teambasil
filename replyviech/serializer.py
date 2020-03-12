@@ -5,6 +5,7 @@ def write_output(assignment, original_devs, original_managers, nodes, outfile):
     man_nodes = sorted([node for node in nodes if node.type == 'manager'], key=lambda node: node.id)
 
     with open(outfile, "w") as f:
+        print("Developers")
         for i, _ in enumerate(original_devs):
             ids = [id for id, x in enumerate(developer) if x == i]
             if ids:
@@ -13,6 +14,7 @@ def write_output(assignment, original_devs, original_managers, nodes, outfile):
             else:
                 f.write("X\n")
 
+        print("Managers")
         for i, _ in enumerate(original_managers):
             ids = [id for id, x in enumerate(manager) if x == i]
             if ids:
