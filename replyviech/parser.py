@@ -8,9 +8,6 @@ class Node:
         self.gid = gid
         self.position = position
 
-    def __str__(self):
-        return f"Node(type={self.type}, id={self.id}, gid={self.gid}, position={self.position})"
-
 
 def create_office(lines):
     nodes = []
