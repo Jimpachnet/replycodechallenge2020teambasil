@@ -4,6 +4,7 @@ class Developer:
         self.bonus = bonus
         self.skillset = skillset
 
+
 class Manager:
     def __init__(self, company, bonus):
         self.company = company
