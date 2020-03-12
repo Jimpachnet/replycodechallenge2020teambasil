@@ -24,9 +24,9 @@ def cost(map, workers, assignment):
         node1_id = edge[0]
         node2_id = edge[1]
         type1 = nodes[node1_id][0]
-        type2 = nodes[node2_id][1]
-        jobid1 = nodes[node1_id][0]
-        jobid2 = nodes[node1_id][1]
+        type2 = nodes[node2_id][0]
+        jobid1 = nodes[node1_id][1]
+        jobid2 = nodes[node2_id][1]
 
         cost -= calculate_potential(workers[type1][assignment[type1][jobid1]],workers[type2][assignment[type1][jobid2]])
 
